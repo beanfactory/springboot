@@ -1,0 +1,80 @@
+app:
+  app-name: zhishangquan-server-dev
+  allow-generate-api: true
+  allow-cross-domain-access: true
+
+logging:
+  config: classpath:log.xml
+
+server:
+  port: 8081
+  session-timeout: 1800  
+  
+spring:
+  main:
+    show_banner: false
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  multipart:
+      enabled: true
+      max-file-size: 10Mb
+      max-request-size: 10Mb
+  datasource:
+    name: datasource
+    initialize: false
+    
+    url: jdbc:mysql://ilovemldu.mysql.rds.aliyuncs.com:3506/zhishangq_dev?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF8
+    username: zhishangq_dev
+    password: zhishangq_dev123
+    driverClassName: com.mysql.jdbc.Driver
+    
+    max-active: 2
+    max-idle: 2
+    min-idle: 2
+    initial-size: 2
+    validation-query: select 1
+    test-on-borrow: true
+    test-on-return: false
+    test-while-idle: false
+    time-between-eviction-runs-millis: 3000
+    min-evictable-idle-time-millis: 3000
+    max-wait: 3000
+    jmx-enabled: true
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    # 自动创建数据库表
+    # hibernate.ddl-auto: update
+    show-sql: true
+
+# 缓存配置    
+memcached:
+  servers: 139.129.116.62:11211
+  username: root
+  password: YwjX2NhL62
+  needAuth: false
+
+# 对象存储配置
+oss:
+  accessKeyId: ouH3GggrE3VO0JXc
+  accessKeySecret: WGisbau9V340sUGjdVwNlxyqVHGM22
+  upload-endpoint: http://oss-cn-qingdao.aliyuncs.com
+  download-endpoint:  http://dev-proj.oss-cn-qingdao.aliyuncs.com
+  bucketName: dev-proj
+  download-url-expiration: 1800000              # 下载地址的有效时长，单位为ms，默认为半小时
+
+# 短信
+sms:
+  uid: 1638
+  sign: 智商圈
+  token: 31d3c98dc41566fa31c559cbf6b2f51c122bb9c5e81e6f198512afed447d67cb
+  url: http://sms.reactor.uworks.cc/sms/msg/send
+  
+  
+  
